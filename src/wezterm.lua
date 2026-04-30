@@ -2,10 +2,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- Load custom colors
-local theme = require("themes.yugen-ash")
-
--- Appearance
-config.colors = theme.scheme
+config.colors = require("themes.yugen-ash")
 config.cursor_thickness = 1
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMonoNL Nerd Font",
@@ -30,6 +27,12 @@ config.leader = {
 }
 
 config.keys = {
+	-- New tab
+	{
+		key = "c",
+		mods = "LEADER",
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
 	-- Split panes
 	{
 		key = "\\",
@@ -63,6 +66,27 @@ config.keys = {
 		key = "l",
 		mods = "LEADER",
 		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	-- Resize panes
+	{
+		key = "LeftArrow",
+		mods = "LEADER | SHIFT",
+		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "RightArrow",
+		mods = "LEADER | SHIFT",
+		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+	},
+	{
+		key = "DownArrow",
+		mods = "LEADER | SHIFT",
+		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+	},
+	{
+		key = "UpArrow",
+		mods = "LEADER | SHIFT",
+		action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
 	},
 }
 
