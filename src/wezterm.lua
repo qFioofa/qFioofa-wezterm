@@ -4,10 +4,13 @@ local config = {}
 -- Load custom colors
 config.colors = require("themes.yugen-ash")
 config.cursor_thickness = 1
+
 config.font = wezterm.font_with_fallback({
+	"JetBrains Mono",
+	"JetBrains Mono Nerd Font",
 	"JetBrainsMonoNL Nerd Font",
 	"Fira Code",
-	"DejaVu Sans Mono",
+	"Cascadia Code PL",
 })
 config.font_size = 14
 
@@ -92,5 +95,18 @@ config.keys = {
 
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
+
+-- Windows OS
+if wezterm.target_triple:find("windows") then
+	local error, windows_function = pcall(function()
+		return require("OS.windows")
+	end)
+
+	if error == nil then
+		windows_function(config)
+	end
+end
+
+config.exit_behavior = "Close"
 
 return config
