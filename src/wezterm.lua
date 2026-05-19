@@ -98,11 +98,11 @@ config.webgpu_power_preference = "HighPerformance"
 
 -- Windows OS
 if wezterm.target_triple:find("windows") then
-	local error, windows_function = pcall(function()
+	local success, windows_function = pcall(function()
 		return require("OS.windows")
 	end)
 
-	if error == nil then
+	if success then
 		windows_function(config)
 	end
 end
