@@ -11,13 +11,11 @@ function M.apply_to_config(config)
 	}
 
 	config.keys = {
-		-- New tab
 		{
 			key = "c",
 			mods = "LEADER",
 			action = act.SpawnTab("CurrentPaneDomain"),
 		},
-		-- Split panes
 		{
 			key = "\\",
 			mods = "LEADER",
@@ -28,7 +26,6 @@ function M.apply_to_config(config)
 			mods = "LEADER",
 			action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 		},
-		-- Navigate panes
 		{
 			key = "h",
 			mods = "LEADER",
@@ -49,7 +46,6 @@ function M.apply_to_config(config)
 			mods = "LEADER",
 			action = act.ActivatePaneDirection("Right"),
 		},
-		-- Resize panes
 		{
 			key = "LeftArrow",
 			mods = "LEADER | SHIFT",
@@ -71,6 +67,14 @@ function M.apply_to_config(config)
 			action = act.AdjustPaneSize({ "Up", 5 }),
 		},
 	}
+
+	for i = 1, 9 do
+		table.insert(config.keys, {
+			key = tostring(i),
+			mods = "LEADER",
+			action = act.ActivateTab(i - 1),
+		})
+	end
 end
 
 return M

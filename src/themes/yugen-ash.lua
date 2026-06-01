@@ -1,27 +1,4 @@
-local palette = {
-	color800 = "#000000",
-	color700 = "#151515",
-	color600 = "#303030",
-	color500 = "#505050",
-	color400 = "#696969",
-	color300 = "#A9A9A9",
-	color200 = "#D4D4D4",
-	color100 = "#FAFAFA",
-	primary = "#FFBE89",
-	success = "#7EAB8E",
-	warning = "#FFF2AF",
-	error = "#F57A7A",
-	violet = "#c678dd",
-	crimson = "#bf616a",
-	tide = "#79a0aa",
-	sage = "#9db89c",
-	gold = "#D4A017",
-	seafoam = "#8dd3c3",
-	moss = "#6A8A6A",
-	amber = "#D4A76A",
-	coral = "#FF9E8B",
-	ember = "#B35A3A",
-}
+local palette = require("themes.palette")
 
 local colors = {
 	background = palette.color700,
@@ -32,6 +9,7 @@ local colors = {
 	-- cursor_style = "SteadyBlock",
 	selection_bg = "rgba(105,105,105,0.6)",
 	selection_fg = palette.color100,
+	split = palette.color500,
 	ansi = {
 		palette.color800,
 		palette.crimson,

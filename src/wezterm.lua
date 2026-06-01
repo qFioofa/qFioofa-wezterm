@@ -5,10 +5,12 @@ local config = wezterm.config_builder()
 local modules = {
 	"config.fonts",
 	"config.appearance",
+	"config.panes",
 	"config.tabs",
 	"config.keys",
 	"config.general",
 	"events.window",
+	"events.status",
 }
 
 for _, name in ipairs(modules) do
