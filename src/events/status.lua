@@ -10,7 +10,7 @@ local ICON_LEADER_ON = utf8.char(0xE26D)
 local ICON_LEADER_OFF = utf8.char(0xF2C3)
 local ICON_HOST = wezterm.nerdfonts.cod_server or ""
 
-local MAX_TITLE = 8
+local MAX_TITLE = 12
 
 local function shorten(title)
 	if title == nil or #title == 0 then
@@ -20,6 +20,19 @@ local function shorten(title)
 		return wezterm.truncate_right(title, MAX_TITLE - 1) .. "…"
 	end
 	return title
+end
+
+local function app_name(pane)
+	local proc = pane.foreground_process_name
+	if proc == nil or #proc == 0 then
+		return nil
+	end
+	local name = proc:match("[^/\\]+$") or proc
+	name = name:gsub("%.%w+$", "")
+	if #name == 0 then
+		return nil
+	end
+	return name
 end
 
 local function pill(accent, text)
@@ -68,7 +81,7 @@ function M.apply_to_config(config)
 			local index = tab.tab_index + 1
 			local title = tab.tab_title
 			if title == nil or #title == 0 then
-				title = tab.active_pane.title
+				title = app_name(tab.active_pane) or tab.active_pane.title
 			end
 			title = shorten(title)
 
