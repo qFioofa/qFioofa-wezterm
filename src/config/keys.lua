@@ -46,6 +46,33 @@ function M.apply_to_config(config)
 			mods = "LEADER",
 			action = act.ActivatePaneDirection("Right"),
 		},
+		-- Russian layout (ЙЦУКЕН) mirrors: bare keys after LEADER send
+		-- Cyrillic when the RU layout is active (c/h/j/k/l -> с/р/о/л/д).
+		{
+			key = "с",
+			mods = "LEADER",
+			action = act.SpawnTab("CurrentPaneDomain"),
+		},
+		{
+			key = "р",
+			mods = "LEADER",
+			action = act.ActivatePaneDirection("Left"),
+		},
+		{
+			key = "о",
+			mods = "LEADER",
+			action = act.ActivatePaneDirection("Down"),
+		},
+		{
+			key = "л",
+			mods = "LEADER",
+			action = act.ActivatePaneDirection("Up"),
+		},
+		{
+			key = "д",
+			mods = "LEADER",
+			action = act.ActivatePaneDirection("Right"),
+		},
 		{
 			key = "LeftArrow",
 			mods = "LEADER | SHIFT",
