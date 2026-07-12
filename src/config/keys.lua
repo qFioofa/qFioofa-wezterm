@@ -4,8 +4,11 @@ local act = wezterm.action
 local M = {}
 
 function M.apply_to_config(config)
+	-- Match the tmux prefix (see tmux/src/binds.conf): C-m primary.
+	-- C-m == Enter at the byte level; needs a terminal with extended-keys
+	-- (CSI-u) support to tell them apart.
 	config.leader = {
-		key = "n",
+		key = "m",
 		mods = "CTRL",
 		timeout_milliseconds = 10000,
 	}
